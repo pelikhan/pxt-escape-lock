@@ -1,8 +1,8 @@
 // TODO pre-program the digit and digit index
 // ASSUME 4 digit locks
 let digitIndex = 0;
-let digit = 3;
-let secret = 121915;
+let key = [3,7,9,1]; // key of combination lock
+let secret = 121915; // code sent by player
 
 let allLocksStatus = 0;
 let status = escape.LOCK_CLOSED;
@@ -52,7 +52,7 @@ basic.forever(function () {
     } else if (!allUnlocked) {
         basic.showIcon(IconNames.Happy);
     } else {
-        basic.showNumber(digit);
+        basic.showNumber(key[digitIndex]);
     }
 })
 
