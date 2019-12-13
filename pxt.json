@@ -2,7 +2,8 @@
     "name": "escape-lock",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "escape": "github:pelikhan/pxt-escape#master"
     },
     "description": "",
     "files": [
