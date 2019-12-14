@@ -1,6 +1,6 @@
 // TODO pre-program the digit and digit index
 // ASSUME 4 digit locks
-const digitIndex = 3;
+const digitIndex = 2;
 let allLocksStatus = 0;
 let status = 0;
 
@@ -29,7 +29,8 @@ function updateStatus(index: number, status: number) {
 
 // broadcast status every 1000 ms
 basic.forever(function () {
-    led.toggle(0, 0)
+    if (status == escape.LOCK_CLOSED)
+        led.toggle(0, 0)
     const b = control.createBuffer(3);
     b[0] = escape.LOCK_STATUS;
     b[1] = digitIndex;
