@@ -1,17 +1,20 @@
 // TODO pre-program the digit and digit index
 // ASSUME 4 digit locks
-let digitIndex = 3;
-let key = [3,7,9,1]; // key of combination lock
-let secret = 853; // code sent by player
-
+const digitIndex = 3;
 let allLocksStatus = 0;
-let status = escape.LOCK_CLOSED;
+let status = 0;
 
 basic.showString("LOCK" + digitIndex)
 
+function reset() {
+    allLocksStatus = 0;
+    status = escape.LOCK_CLOSED;
+}
+reset();
+
 function checkCode(code: number) {
     if (status != escape.LOCK_OPEN &&
-        secret == code) {
+        escape.codes[digitIndex] == code) {
         status = escape.LOCK_OPEN;
         updateStatus(digitIndex, status); // update self status
     }
@@ -26,6 +29,7 @@ function updateStatus(index: number, status: number) {
 
 // broadcast status every 1000 ms
 basic.forever(function () {
+    led.toggle(0, 0)
     const b = control.createBuffer(3);
     b[0] = escape.LOCK_STATUS;
     b[1] = digitIndex;
@@ -38,6 +42,9 @@ basic.forever(function () {
 radio.onReceivedBuffer(msg => {
     escape.logMessage(msg)
     switch (msg[0]) {
+        case escape.RESET:
+            reset(); 
+            break;
         case escape.CODE:
             checkCode(msg.getNumber(NumberFormat.UInt32LE, 1));
             break;
@@ -56,7 +63,7 @@ basic.forever(function () {
     } else if (!allUnlocked) {
         basic.showIcon(IconNames.Happy);
     } else {
-        basic.showNumber(key[digitIndex]);
+        basic.showNumber(escape.key[digitIndex]);
     }
 })
 
