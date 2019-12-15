@@ -6,12 +6,10 @@ let status = 0;
 
 basic.showString("LOCK" + digitIndex)
 
-function reset() {
+escape.onReset(function () {
     allLocksStatus = 0;
     status = escape.LOCK_CLOSED;
-}
-reset();
-escape.onReset(reset);
+});
 
 function checkCode(code: number) {
     if (status != escape.LOCK_OPEN &&
@@ -25,7 +23,7 @@ function updateStatus(index: number, status: number) {
     if (status == escape.LOCK_OPEN)
         allLocksStatus |= 1 << index;
     else
-        allLocksStatus &= ~(1 << index); 
+        allLocksStatus &= ~(1 << index);
 }
 
 // broadcast status every 1000 ms
@@ -54,7 +52,7 @@ escape.onMessageReceived(function (msg: number, data: Buffer) {
 
 // displace
 escape.onUpdate(function () {
-    const allUnlocked = 
+    const allUnlocked =
         (allLocksStatus & escape.ALL_UNLOCKED) == escape.ALL_UNLOCKED;
     if (status == escape.LOCK_CLOSED) {
         basic.clearScreen()
