@@ -6,11 +6,6 @@ let status = 0;
 
 basic.showString("LOCK" + digitIndex)
 
-escape.onReset(function () {
-    allLocksStatus = 0;
-    status = escape.LOCK_CLOSED;
-});
-
 function checkCode(code: number) {
     if (status != escape.LOCK_OPEN &&
         escape.CODES[digitIndex] == code) {
