@@ -2,7 +2,7 @@
 // ASSUME 4 digit locks
 const digitIndex = 2;
 let allLocksStatus = 0;
-let status = 0;
+let status = escape.LOCK_CLOSED;
 
 basic.showString("LOCK" + digitIndex)
 
