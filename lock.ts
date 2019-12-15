@@ -62,7 +62,7 @@ basic.forever(function () {
     if (status == escape.LOCK_CLOSED) {
         basic.clearScreen()
     } else if (!allUnlocked) {
-        basic.showIcon(IconNames.Happy);
+        basic.showString("UNLOCKED");
     } else {
         basic.showNumber(escape.PHYSICAL_LOCK_KEY[digitIndex]);
     }
