@@ -3,7 +3,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "escape": "github:pelikhan/pxt-escape#v0.1.1"
+        "escape": "github:pelikhan/pxt-escape#v0.1.4"
     },
     "description": "",
     "files": [

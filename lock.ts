@@ -11,6 +11,7 @@ function reset() {
     status = escape.LOCK_CLOSED;
 }
 reset();
+escape.onReset(reset);
 
 function checkCode(code: number) {
     if (status != escape.LOCK_OPEN &&
@@ -40,23 +41,19 @@ basic.forever(function () {
 })
 
 // receive code message from the user
-radio.onReceivedBuffer(msg => {
-    escape.logMessage(msg)
-    switch (msg[0]) {
-        case escape.RESET:
-            reset(); 
-            break;
+escape.onMessageReceived(function (msg: number, data: Buffer) {
+    switch (msg) {
         case escape.CODE:
-            checkCode(msg.getNumber(NumberFormat.UInt32LE, 1));
+            checkCode(data.getNumber(NumberFormat.UInt32LE, 0));
             break;
         case escape.LOCK_STATUS:
-            updateStatus(msg[1], msg[2]);
+            updateStatus(data[0], data[1]);
             break;
     }
 })
 
 // displace
-basic.forever(function () {
+escape.onUpdate(function () {
     const allUnlocked = 
         (allLocksStatus & escape.ALL_UNLOCKED) == escape.ALL_UNLOCKED;
     if (status == escape.LOCK_CLOSED) {
