@@ -14,7 +14,7 @@ reset();
 
 function checkCode(code: number) {
     if (status != escape.LOCK_OPEN &&
-        escape.codes[digitIndex] == code) {
+        escape.CODES[digitIndex] == code) {
         status = escape.LOCK_OPEN;
         updateStatus(digitIndex, status); // update self status
     }
@@ -64,7 +64,7 @@ basic.forever(function () {
     } else if (!allUnlocked) {
         basic.showIcon(IconNames.Happy);
     } else {
-        basic.showNumber(escape.key[digitIndex]);
+        basic.showNumber(escape.PHYSICAL_LOCK_KEY[digitIndex]);
     }
 })
 
