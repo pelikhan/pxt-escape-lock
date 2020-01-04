@@ -1,17 +1,9 @@
 # pxt-escape-lock ![Build status badge](https://github.com/pelikhan/pxt-escape-lock/workflows/MakeCode/badge.svg)
 
+A physical lock code controller to be used
+with the micro:bit [escape](https://github.com/pelikhan/pxt-escape) system.
 
-
-## Use this extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open https://makecode.microbit.org/
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for the URL of this repository and import
-
-## Edit this extension
+## Edit this project
 
 To edit this repository in MakeCode.
 
@@ -19,15 +11,8 @@ To edit this repository in MakeCode.
 * click on **Import** then click on **Import URL**
 * paste the repository URL and click import
 
-## Blocks preview
-
-This section shows the blocks code from the last commit in master.
-
-![A rendered view of the blocks](https://github.com/pelikhan/pxt-escape-lock/raw/master/.makecode/blocks.png)
-
 ## Supported targets
 
-* for PXT/microbit
 * for PXT/microbit
 (The metadata above is needed for package search.)
 
