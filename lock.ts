@@ -57,4 +57,3 @@ escape.onUpdate(function () {
         basic.showNumber(escape.PHYSICAL_LOCK_KEY[digitIndex]);
     }
 })
-
