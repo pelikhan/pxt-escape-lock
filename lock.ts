@@ -1,6 +1,6 @@
 // TODO pre-program the digit and digit index
 // ASSUME 4 digit locks
-const digitIndex = 2;
+const digitIndex = 3;
 let allLocksStatus = 0;
 let status = escape.LOCK_CLOSED;
 

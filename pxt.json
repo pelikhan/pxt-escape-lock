@@ -3,7 +3,7 @@
     "dependencies": {
         "core": "*",
         "radio": "*",
-        "escape": "github:pelikhan/pxt-escape#v0.2.8"
+        "escape": "github:pelikhan/pxt-escape#v0.2.11"
     },
     "description": "",
     "files": [
@@ -15,5 +15,8 @@
     "testFiles": [
         "test.ts"
     ],
-    "version": "0.0.8"
+    "version": "0.0.8",
+    "supportedTargets": [
+        "microbit"
+    ]
 }
